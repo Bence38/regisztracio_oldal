@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regisztrációs Lap</title>
+    <style>
+      body {
+        margin: 0 auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Regisztráció</h1>
+    <div>
+      <p>Email</p>
+      <input type="text" id="email" />
+      <p>Jelszó</p>
+      <input type="password" id="jelszo" />
+      <p>Jelszó mégegyszer</p>
+      <input type="password" id="jelszo2" />
+      <button id="gomb">Regisztráció</button>
+    </div>
+    <script>
+      const gomb = document.getElementById("gomb");
+      const email = document.getElementById("email");
+      const jelszo = document.getElementById("jelszo");
+      const jelszo2 = document.getElementById("jelszo2");
+
+      gomb.addEventListener("click", () => {
+        if (!email.value.includes("@") || !email.value.includes(".")) {
+          window.alert("Hibás email cím!");
+        } else if (jelszo.value !== jelszo2.value) {
+          window.alert("A két jelszó nem egyezik. Kérem próbálja újra!");
+        } else {
+          window.alert("Sikeres Regisztráció!");
+        }
+      });
+    </script>
+  </body>
+</html>
