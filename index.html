@@ -6,22 +6,96 @@
     <title>Regisztrációs Lap</title>
     <style>
       body {
-        margin: 0 auto;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        /* Háttérkép */
+        background-image: url("porsche.jpg"); /* saját képed neve */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.2); /* áttetsző fehér */
+        backdrop-filter: blur(12px); /* üveg-hatás */
+        -webkit-backdrop-filter: blur(12px); /* Safari támogatás */
+        padding: 2rem;
+        border-radius: 16px;
+        /* keret eltüntetve */
+        box-shadow: none; 
+        width: 100%;
+        max-width: 400px;
         text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 1.5rem;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        text-align: left;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      }
+
+      input {
+        width: 100%;
+        padding: 0.6rem;
+        margin-bottom: 1rem;
+        border: none; /* input keret is eltűnik */
+        border-radius: 8px;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.6);
+        color: #000;
+      }
+
+      input:focus {
+        outline: 2px solid #007bff; /* csak fókuszkor látszik */
+      }
+
+      button {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1rem;
+        background: rgba(0, 123, 255, 0.8);
+        color: #fff;
+        border: none; /* keret nélkül */
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: rgba(0, 86, 179, 0.9);
       }
     </style>
   </head>
   <body>
-    <h1>Regisztráció</h1>
-    <div>
-      <p>Email</p>
-      <input type="text" id="email" />
-      <p>Jelszó</p>
-      <input type="password" id="jelszo" />
-      <p>Jelszó mégegyszer</p>
-      <input type="password" id="jelszo2" />
+    <div class="container">
+      <h1>Regisztráció</h1>
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="pl. valaki@email.com" />
+
+      <label for="jelszo">Jelszó</label>
+      <input type="password" id="jelszo" placeholder="Írja be a jelszót" />
+
+      <label for="jelszo2">Jelszó mégegyszer</label>
+      <input type="password" id="jelszo2" placeholder="Ismételje meg a jelszót" />
+
       <button id="gomb">Regisztráció</button>
     </div>
+
     <script>
       const gomb = document.getElementById("gomb");
       const email = document.getElementById("email");
@@ -33,6 +107,8 @@
           window.alert("Hibás email cím!");
         } else if (jelszo.value !== jelszo2.value) {
           window.alert("A két jelszó nem egyezik. Kérem próbálja újra!");
+        } else if (jelszo.value.length < 6) {
+          window.alert("A jelszónak legalább 6 karakter hosszúnak kell lennie!");
         } else {
           window.alert("Sikeres Regisztráció!");
         }
